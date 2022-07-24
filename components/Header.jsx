@@ -4,10 +4,12 @@ import { PlusCircleIcon } from "@heroicons/react/outline";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atom/modalAtom";
+import { useRouter } from "next/router";
 
 export default function Header() {
   const { data: session } = useSession();
   const [open, setOpen] = useRecoilState(modalState);
+  const router = useRouter();
 
   console.log(session, "data");
 
@@ -20,6 +22,7 @@ export default function Header() {
             src="https://1iwky71fbek0h7wy43b8a0i2-wpengine.netdna-ssl.com/wp-content/uploads/2021/03/Instagram-Text.png"
             layout="fill"
             className="object-contain"
+            onClick={() => router.push("/")}
           />
         </div>
 
@@ -28,6 +31,7 @@ export default function Header() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/640px-Instagram_logo_2022.svg.png"
             layout="fill"
             className="object-contain"
+            onClick={() => router.push("/")}
           />
         </div>
 
@@ -45,7 +49,10 @@ export default function Header() {
 
         {/* Right */}
         <div className="flex space-x-4 items-center">
-          <HomeIcon className="hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out" />
+          <HomeIcon
+            onClick={() => router.push("/")}
+            className="hidden md:inline-flex h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out"
+          />
           {session ? (
             <>
               <PlusCircleIcon
