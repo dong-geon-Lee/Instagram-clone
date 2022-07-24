@@ -14,6 +14,7 @@ export default function Home() {
       <Header />
 
       {/* Feed */}
+      <p>lor</p>
 
       {/* Footer */}
     </div>
