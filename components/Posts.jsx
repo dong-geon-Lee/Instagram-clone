@@ -16,13 +16,6 @@ export default function Posts() {
       img: "https://images.unsplash.com/photo-1658519387710-714d1a29376a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
       caption: "New picture from my city",
     },
-    {
-      id: "3",
-      username: "Lee",
-      userImg: "https://newsimg.sedaily.com/2020/05/28/1Z2XCSYAIX_1.jpg",
-      img: "https://images.unsplash.com/photo-1658525982661-e7fe4c368dca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
-      caption: "Nice picture",
-    },
   ];
 
   return (
