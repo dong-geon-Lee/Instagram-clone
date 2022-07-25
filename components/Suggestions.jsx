@@ -26,7 +26,7 @@ export default function Suggestions() {
       {suggestions.map((suggestion) => (
         <div
           className="flex items-center justify-between mt-3"
-          key={suggestion.username}
+          key={suggestion.id}
         >
           <img
             src={`https://i.pravatar.cc/150?img=${Math.ceil(
