@@ -29,31 +29,6 @@ export default function Post({ img, userImg, caption, username, id }) {
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
 
-  const sendComment = async (e) => {
-    e.preventDefault();
-
-    const commentToSend = comment;
-
-    setComment("");
-
-    await addDoc(collection(db, "posts", id, "comments"), {
-      comment: commentToSend,
-      username: session.user.username,
-      userImage: session.user.image,
-      timestamp: serverTimestamp(),
-    });
-  };
-
-  const likePost = async () => {
-    if (hasLiked) {
-      await deleteDoc(doc(db, "posts", id, "likes", session.user.uid));
-    } else {
-      await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
-        username: session.user.username,
-      });
-    }
-  };
-
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(
@@ -82,6 +57,31 @@ export default function Post({ img, userImg, caption, username, id }) {
       likes.findIndex((like) => like.id === session?.user.uid) !== -1
     );
   }, [likes]);
+
+  const sendComment = async (e) => {
+    e.preventDefault();
+
+    const commentToSend = comment;
+
+    setComment("");
+
+    await addDoc(collection(db, "posts", id, "comments"), {
+      comment: commentToSend,
+      username: session.user.username,
+      userImage: session.user.image,
+      timestamp: serverTimestamp(),
+    });
+  };
+
+  const likePost = async () => {
+    if (hasLiked) {
+      await deleteDoc(doc(db, "posts", id, "likes", session.user.uid));
+    } else {
+      await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
+        username: session.user.username,
+      });
+    }
+  };
 
   return (
     <div className="bg-white my-7 border rounded-md">
